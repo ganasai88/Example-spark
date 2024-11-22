@@ -67,7 +67,7 @@ pipeline {
                                "Name": "${STEP_NAME}",
                                "ActionOnFailure": "CONTINUE",
                                "Args": [
-                                   "--deploy-mode", "cluster", "s3://${S3_BUCKET}/main.py",
+                                   "--deploy-mode", "cluster", "s3://${S3_BUCKET}/main2.py",
                                    "--config", "s3://${S3_BUCKET}/s3config.json"
                                ]
                            }]' \
