@@ -74,7 +74,7 @@ pipeline {
                            --region ${REGION}
                    """, returnStdout: true).trim()
 
-                   def stepId = addStepCommand.split(':')[1]?.trim()?.replaceAll('"', '')
+                   def stepId = addStepCommand.replaceAll("[\\[\\]\"\\s]", "").split(":")[1]?.trim()
 
                    echo "Step ID: $stepId"
 
