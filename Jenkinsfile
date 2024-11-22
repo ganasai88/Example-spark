@@ -61,17 +61,18 @@ pipeline {
                         sh """
                         aws emr add-steps \
                             --cluster-id ${env.CLUSTER_ID} \
+                            --region ${REGION} \
                             --steps '[{
                                 "Type": "Spark",
                                 "Name": "Run Monthly Spark Job",
                                 "ActionOnFailure": "CONTINUE",
                                 "Args": [
-                                    "--deploy-mode", "cluster",
-                                    "--py-files", "s3://${S3_BUCKET}/main2.py",
+                                    spark-submit,
+                                    "s3://${S3_BUCKET}/main2.py",
                                     "--config", "s3://${S3_BUCKET}/s3config.json"
                                 ]
                             }]' \
-                            --region ${REGION}
+
                         """
                     echo "Step added to EMR Cluster ID: ${env.CLUSTER_ID}"
                 }
