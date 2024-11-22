@@ -77,6 +77,8 @@ pipeline {
                    sh addStepCommand
                    echo "Step added to EMR Cluster ID: ${env.CLUSTER_ID}"
 
+                   sleep(time: 60, unit: 'SECONDS')
+
                    // Poll for step completion status
                    def stepId = sh(script: "aws emr list-steps --cluster-id ${env.CLUSTER_ID} --region ${env.REGION} --query 'Steps[?Timeline.CreationDateTime != null] | sort_by(@, &Timeline.CreationDateTime) | [-1].Id' --output text", returnStdout: true).trim()
 
