@@ -67,7 +67,6 @@ pipeline {
                                 "ActionOnFailure": "CONTINUE",
                                 "Args": [
                                     "--deploy-mode", "cluster",
-                                    "--master", "yarn",
                                     "--py-files", "s3://${S3_BUCKET}/main2.py",
                                     "--config", "s3://${S3_BUCKET}/s3config.json"
                                 ]
