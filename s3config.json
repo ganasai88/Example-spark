@@ -1,4 +1,4 @@
 {
-"data_source": "s3://s3://cloud-hosting01/*.csv",
+"data_source": "s3://cloud-hosting01/*.csv",
 "output_path": "s3://cloud-hosting01/output/"
 }
