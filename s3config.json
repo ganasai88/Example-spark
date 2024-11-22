@@ -1,4 +1,4 @@
 {
-"data_source": "s3://examplespark/monthly/2024-11-17/input/product_data.csv",
-"output_path": "s3://examplespark/monthly/2024-11-17/output/"
+"data_source": "s3://s3://cloud-hosting01/*.csv",
+"output_path": "s3://cloud-hosting01/output/"
 }
