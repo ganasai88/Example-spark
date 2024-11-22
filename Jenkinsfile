@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REPO_URL = 'https://github.com/ganasai88/EMR-Spark.git' // GitHub repository URL4
+        REPO_URL = 'https://github.com/ganasai88/Example-spark.git' // GitHub repository URL4
         VENV_DIR = 'venv'
         S3_DIR = 'S3-Terraform'
         EMR_DIR = 'EMR'
