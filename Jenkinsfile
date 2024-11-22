@@ -78,7 +78,7 @@ pipeline {
                    echo "Step added to EMR Cluster ID: ${env.CLUSTER_ID}"
 
                    // Poll for step completion status
-                   def stepId = sh(script: "aws emr list-steps --cluster-id ${env.CLUSTER_ID} --region ${REGION} --query "Steps | sort_by(@, &CreationDate) | [-1].Id" --output text", returnStdout: true).trim()
+                   def stepId = sh(script: "aws emr list-steps --cluster-id ${env.CLUSTER_ID} --region ${REGION} --query 'Steps | sort_by(@, &CreationDate) | [-1].Id' --output text", returnStdout: true).trim()
 
                    if (stepId == '') {
                        error "Failed to retrieve step ID!"
