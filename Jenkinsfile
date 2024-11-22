@@ -74,11 +74,11 @@ pipeline {
                            --region ${REGION}
                    """, returnStdout: true).trim()
 
-                   def stepId = addStepCommand.replaceAll("[\\[\\]\"\\s]", "").split(":")[1]?.trim()
+                   def stepId = addStepCommand.replaceAll("[^a-zA-Z0-9\\-]", "").split(":")[1]?.trim()
 
                    echo "Step ID: $stepId"
 
-                   sh addStepCommand
+                   //sh addStepCommand
                    echo "Step added to EMR Cluster ID: ${env.CLUSTER_ID}"
 
                    if (stepId == '') {
