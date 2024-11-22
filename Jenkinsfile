@@ -27,7 +27,7 @@ pipeline {
                      sh '''
                      echo "Uploading files to S3 bucket ${S3_BUCKET}..."
                      # Sync the code to S3
-                     aws s3 sync . s3://${S3_BUCKET} --exclude ".git/*"
+                     aws s3 sync . s3://${S3_BUCKET} --exclude "*" --include "*.py" --include "*.json" --include "*.csv"
                      echo "Files uploaded successfully!"
                      '''
                  }
@@ -68,7 +68,7 @@ pipeline {
                                 "Args": [
                                     "--deploy-mode", "cluster",
                                     "--master", "yarn",
-                                    "--py-files", "s3://${S3_BUCKET}/main.py",
+                                    "--py-files", "s3://${S3_BUCKET}/main2.py",
                                     "--config", "s3://${S3_BUCKET}/s3config.json"
                                 ]
                             }]' \
