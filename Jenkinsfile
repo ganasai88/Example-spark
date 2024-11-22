@@ -59,7 +59,7 @@ pipeline {
             steps {
                 script {
                    // Adding step to the running EMR cluster
-                   def addStepCommand = """
+                   def addStepCommand = sh(script: """
                        aws emr add-steps \
                            --cluster-id ${env.CLUSTER_ID} \
                            --steps '[{
@@ -72,7 +72,11 @@ pipeline {
                                ]
                            }]' \
                            --region ${REGION}
-                   """
+                   """, returnStdout: true).trim()
+
+                   def id = addStepCommand.split(':')[1]?.trim()
+
+                   echo "Step ID: $id"
 
                    sh addStepCommand
                    echo "Step added to EMR Cluster ID: ${env.CLUSTER_ID}"
