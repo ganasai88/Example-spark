@@ -106,6 +106,7 @@ pipeline {
                    if (stepStatus == 'FAILED' || stepStatus == 'CANCELED') {
                        error "EMR step failed or was canceled!"
                    }
+                }
             }
         }
     }
